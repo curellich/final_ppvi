@@ -11,10 +11,6 @@ import java.util.Date;
 @Entity
 @Table(name = "counter_events")
 public class CounterEvent extends Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty
-    private Long id;
     @Enumerated(EnumType.STRING)
     @JsonProperty
     private CounterZone zone;
@@ -27,16 +23,7 @@ public class CounterEvent extends Event {
     @JsonProperty
     private String description;
 
-    public CounterEvent(Long storeId, String macAddress, Date timestamp, Long id, CounterZone zone, CounterStatus status, CounterDirection direction, String description) {
-        super(storeId, macAddress, timestamp);
-        this.id = id;
-        this.zone = zone;
-        this.status = status;
-        this.direction = direction;
-        this.description = description;
-    }
-
-    public CounterEvent(Long storeId, String macAddress, Date timestamp, CounterZone zone, CounterStatus status, CounterDirection direction, String description) {
+    public CounterEvent(int storeId, String macAddress, Date timestamp, CounterZone zone, CounterStatus status, CounterDirection direction, String description) {
         super(storeId, macAddress, timestamp);
         this.zone = zone;
         this.status = status;
@@ -48,14 +35,7 @@ public class CounterEvent extends Event {
 
     }
 
-    @Override
-    public String toString() {
-        return "CounterEvent{" +
-                "id=" + id +
-                ", zone=" + zone +
-                ", status=" + status +
-                ", direction=" + direction +
-                ", description='" + description + '\'' +
-                '}';
+    public CounterZone getZone() {
+        return zone;
     }
 }
