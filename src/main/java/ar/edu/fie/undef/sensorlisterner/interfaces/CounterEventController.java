@@ -33,7 +33,7 @@ public class CounterEventController {
     }
 
     @PostMapping("api/v1/counterstatus")
-    private ResponseEntity<StandardResponse> createCounterEvent(@RequestBody CounterEventRecord request) {
+    public ResponseEntity<StandardResponse> createCounterEvent(@RequestBody CounterEventRecord request) {
 
         var counterEvent = new CounterEvent(
                 request.storeId(),
@@ -45,7 +45,6 @@ public class CounterEventController {
                 request.description());
         try {
             CounterEvent savedCounterEvent = counterEventRepository.save(counterEvent);
-            var jsonSavedCounterEvent = savedCounterEvent.toString();
             response = new StandardResponse(true, "Counter event created", savedCounterEvent);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -55,7 +54,7 @@ public class CounterEventController {
     }
 
     @PostMapping("api/v1/connections")
-    private ResponseEntity<StandardResponse> createConnectionEvent(@RequestBody ConnectionEventRecord request) {
+    public ResponseEntity<StandardResponse> createConnectionEvent(@RequestBody ConnectionEventRecord request) {
         var connectionEvent = new ConnectionEvent(
                 request.storeId(),
                 request.macAddress(),
@@ -73,7 +72,7 @@ public class CounterEventController {
     }
 
     @PostMapping("api/v1/healthchecks")
-    private ResponseEntity<StandardResponse> createHealthCheckEvent(@RequestBody HealthCheckEventRecord request) {
+    public ResponseEntity<StandardResponse> createHealthCheckEvent(@RequestBody HealthCheckEventRecord request) {
         var healthCheckEvent = new HealthCheckEvent(
                 request.storeId(),
                 request.macAddress(),

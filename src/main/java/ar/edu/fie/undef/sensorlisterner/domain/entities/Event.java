@@ -15,10 +15,10 @@ public abstract class Event {
     @JsonProperty
     private Date timestamp;
 
-    public Event() {
+    protected Event() {
     }
 
-    public Event(Long storeId, String macAddress, Date timestamp) {
+    protected Event(Long storeId, String macAddress, Date timestamp) {
         this.storeId = storeId;
         this.macAddress = macAddress;
         this.timestamp = timestamp;
