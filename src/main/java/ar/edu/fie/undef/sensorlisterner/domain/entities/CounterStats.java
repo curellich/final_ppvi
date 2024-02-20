@@ -1,6 +1,7 @@
 package ar.edu.fie.undef.sensorlisterner.domain.entities;
 
 import ar.edu.fie.undef.sensorlisterner.domain.enums.CounterZone;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -9,12 +10,23 @@ import java.util.Date;
 public class CounterStats {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
     private Long id;
+    @JsonProperty
+
     private int storeId;
     @Enumerated(EnumType.STRING)
+    @JsonProperty
+
     private CounterZone zone;
+    @JsonProperty
+
     private Long occupiedInterval;
+    @JsonProperty
+
     private Date occupiedTimestamp;
+    @JsonProperty
+
     private Date freeTimestamp;
 
     public CounterStats() {
