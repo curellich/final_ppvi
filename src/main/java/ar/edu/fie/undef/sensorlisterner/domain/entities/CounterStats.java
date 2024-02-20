@@ -9,7 +9,8 @@ public class CounterStats {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int storeId;
-    private Enum<CounterZone> zone;
+    @Enumerated(EnumType.STRING)
+    private CounterZone zone;
     private Long occupiedInterval;
 
     @ManyToOne
