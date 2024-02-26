@@ -4,4 +4,4 @@ This is a Java Spring Boot microservice that listens for sensor events, stores a
 
 The app creates new CounterStats based on the type of the event. It calculates the time difference between the last event with status OCCUPIED and the current event, and stores this information in the CounterStats entity.
 
-![TP Final PPVI.jpg](..%2FTP%20Final%20PPVI.jpg)
+![Diagrama PPVI Final.jpg](Diagrama%20PPVI%20Final.jpg)
