@@ -1,25 +1,42 @@
 package ar.edu.fie.undef.sensorlisterner.domain.entities;
 
 import ar.edu.fie.undef.sensorlisterner.domain.enums.CounterZone;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+
+import java.util.Date;
 
 @Entity
 public class CounterStats {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
     private Long id;
+    @JsonProperty
+
     private int storeId;
-    private Enum<CounterZone> zone;
+    @Enumerated(EnumType.STRING)
+    @JsonProperty
+
+    private CounterZone zone;
+    @JsonProperty
+
     private Long occupiedInterval;
+    @JsonProperty
 
-    @ManyToOne
-    @JoinColumn(name = "occupied_counter_event_id")
-    private CounterEvent CounterEventIdWithOccupiedStatus;
+    private Date occupiedTimestamp;
+    @JsonProperty
 
-    @ManyToOne
-    @JoinColumn(name = "free_counter_event_id")
-    private CounterEvent CounterEventIdWithFreeStatus;
+    private Date freeTimestamp;
 
     public CounterStats() {
+    }
+
+    public CounterStats(int storeId, CounterZone zone, Long occupiedInterval, Date occupiedTimestamp, Date freeTimestamp) {
+        this.storeId = storeId;
+        this.zone = zone;
+        this.occupiedInterval = occupiedInterval;
+        this.occupiedTimestamp = occupiedTimestamp;
+        this.freeTimestamp = freeTimestamp;
     }
 }
